@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-namespace pwnedu
+namespace SetupTool
 {
     public static class ToolsMenu
     {
