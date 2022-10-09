@@ -16,7 +16,7 @@ namespace pwnedu
         [MenuItem("Tools/Custom Tools/Project Setup/Create Tool Folders")]
         public static void CreateToolFolders()
         {
-            CreateDirectories("_Tools", "MyNotes");
+            CreateDirectories("_Tools", "MyTool");
             AssetDatabase.Refresh();
         }
 
