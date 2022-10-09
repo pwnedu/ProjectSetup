@@ -28,7 +28,7 @@ namespace SetupTool
         [MenuItem(menuItem + "Folder Settings", priority = 31)]
         private static void ProjectViewSettings()
         {
-            var path = $"{toolPath}Editor/Setup Folders.asset";
+            var path = $"{toolPath}Editor/Default Setup Folders.asset";
 
             if (!File.Exists(path)) { return; }
 
