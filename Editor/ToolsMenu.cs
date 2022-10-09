@@ -6,14 +6,14 @@ namespace pwnedu
 {
     public static class ToolsMenu
     {
-        [MenuItem("Tools/Project Setup/Create Project Folders")]
+        [MenuItem("Tools/Custom Tools/Project Setup/Create Project Folders")]
         public static void CreateProjectFolders()
         {
             CreateDirectories("_Project", "Models", "Materials", "Prefabs", "Scripts", "Scenes", "Shaders", "Textures");
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("Tools/Project Setup/Create Tool Folders")]
+        [MenuItem("Tools/Custom Tools/Project Setup/Create Tool Folders")]
         public static void CreateToolFolders()
         {
             CreateDirectories("_Tools", "MyNotes");
