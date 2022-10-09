@@ -22,7 +22,34 @@ namespace SetupTool
         //    AssetDatabase.Refresh();
         //}
 
-        [MenuItem("Tools/Custom Tools/Project Setup/Create Project Folders")]
+        const string menuItem = "Tools/Custom Tools/Project Setup/";
+        const string toolPath = "Packages/com.kiltec.setuptool/";
+
+        [MenuItem(menuItem + "Folder Settings", priority = 31)]
+        private static void ProjectViewSettings()
+        {
+            var path = $"{toolPath}Editor/Setup Folders.asset";
+
+            if (!File.Exists(path)) { return; }
+
+            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
+            EditorGUIUtility.PingObject(asset);
+            Selection.activeObject = asset;
+        }
+
+        [MenuItem(menuItem + "Setup Help", priority = 32)]
+        private static void ProjectViewHelp()
+        {
+            var path = $"{toolPath}README.md";
+
+            if (!File.Exists(path)) { return; }
+
+            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
+            EditorGUIUtility.PingObject(asset);
+            Selection.activeObject = asset;
+        }
+
+        [MenuItem(menuItem + "Create Project Folders", priority = 10)]
         public static void CreateProjectFolders()
         {
             FindPreferences();
