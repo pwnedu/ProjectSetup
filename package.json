@@ -1,0 +1,8 @@
+{
+	"name": "com.pwnedu.setuptool",
+	"version": "0.0.1-preview.1",
+	"description": "This is a simple tool that helps with new project setup.",
+	"displayName": "Kiltec's Setup Tool",
+	"documentationUrl": "http://pwnedu.net",
+	"author": "pwnedu games"
+}
