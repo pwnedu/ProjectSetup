@@ -10,6 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a382ce7c3f1864144a15f5c758204847, type: 3}
-  m_Name: Default Setup Folders
+  m_Name: 
   m_EditorClassIdentifier: 
-  folder: 
+  projectFolder: _MyProject
+  subFolders:
+  - Editor
+  - Materials
+  - Models
+  - Prefabs
+  - Resources
+  - Scenes
+  - Scripts
+  - Settings
+  - Shaders
+  - Sounds
+  - Textures
+  structures:
+  - assetFolderPath: StreamingAssets
+    subFolders: []
+  - assetFolderPath: Plugins
+    subFolders: []

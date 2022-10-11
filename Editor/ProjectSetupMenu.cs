@@ -8,20 +8,6 @@ namespace SetupTool
     {
         private static SetupFoldersPreference preferenceData;
 
-        //[MenuItem("Tools/Custom Tools/Project Setup/Create Project Folders")]
-        //public static void CreateProjectFolders()
-        //{
-        //    CreateDirectories("_Project", "Models", "Materials", "Prefabs", "Scripts", "Scenes", "Shaders", "Textures");
-        //    AssetDatabase.Refresh();
-        //}
-        //
-        //[MenuItem("Tools/Custom Tools/Project Setup/Create Tool Folders")]
-        //public static void CreateToolFolders()
-        //{
-        //    CreateDirectories("_Tools", "MyTool");
-        //    AssetDatabase.Refresh();
-        //}
-
         const string menuItem = "Tools/Custom Tools/Project Setup/";
         const string toolPath = "Packages/com.kiltec.setuptool/";
 
@@ -32,7 +18,7 @@ namespace SetupTool
 
             if (!File.Exists(path)) { return; }
 
-            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
+            var asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
             EditorGUIUtility.PingObject(asset);
             Selection.activeObject = asset;
         }
@@ -44,16 +30,24 @@ namespace SetupTool
 
             if (!File.Exists(path)) { return; }
 
-            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
+            var asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
             EditorGUIUtility.PingObject(asset);
             Selection.activeObject = asset;
+        }
+
+        [MenuItem(menuItem + "Import Script Templates", priority = 20)]
+        public static void ImportScriptTemplates()
+        {
+            var dirPath = Path.Combine(Application.dataPath, "ScriptTemplates");
+            Directory.CreateDirectory(dirPath);
+            CopyFiles(dirPath);
         }
 
         [MenuItem(menuItem + "Create Project Folders", priority = 10)]
         public static void CreateProjectFolders()
         {
             FindPreferences();
-            CreateDirectories(preferenceData.projectFolder, preferenceData.subFolderNames);
+            CreateDirectories(preferenceData.projectFolder, preferenceData.subFolders);
             AssetDatabase.Refresh();
         }
 
@@ -74,6 +68,30 @@ namespace SetupTool
                 var path = AssetDatabase.GUIDToAssetPath(guids[0]);
                 preferenceData = AssetDatabase.LoadAssetAtPath<SetupFoldersPreference>(path);
             }
+        }
+
+        private static void CopyFiles(string destinationPath)
+        {
+            var dataPath = Application.dataPath.Replace("Assets", @"Packages\com.kiltec.setuptool");
+            string[] filePaths = Directory.GetFiles($@"{dataPath}\ScriptTemplates\");
+
+            foreach (string file in filePaths)
+            {
+                FileInfo info = new FileInfo(file);
+                string sourceFile = info.FullName;
+                string destinationFile = $@"{destinationPath}\{info.Name}";
+
+                //Debug.Log(sourceFile);
+                //Debug.Log(destinationFile);
+
+                if (!File.Exists(destinationFile) && !destinationFile.Contains("meta"))
+                {
+                    File.Copy(sourceFile, destinationFile);
+                }
+            }
+
+            Debug.Log("Unity must be restarted to use the new script templates!");
+            AssetDatabase.Refresh();
         }
     }
 }

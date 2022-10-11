@@ -6,6 +6,16 @@ namespace SetupTool
     public class SetupFoldersPreference : ScriptableObject
     {
         public string projectFolder = "_MyProject";
-        public string[] subFolderNames = new string[7] { "Models", "Materials", "Prefabs", "Scripts", "Scenes", "Shaders", "Textures" };
+        public string[] subFolders = new string[11] { "Editor", "Materials", "Models", "Prefabs", "Resources", "Scenes", "Scripts", "Settings", "Shaders", "Sounds", "Textures" };
+        //OTHER FOLDERS: //"Gizmos", "Plugins", "StreamingAssets", "ScriptTemplates"//
+
+        public FolderStructure[] structures;
+    }
+
+    [System.Serializable]
+    public struct FolderStructure
+    {
+        public string assetFolderPath;
+        public string[] subFolders;
     }
 }

@@ -1,0 +1,25 @@
+using UnityEngine;
+#NOTRIM#
+public class #SCRIPTNAME#: MonoBehaviour
+{
+	public static #SCRIPTNAME# instance;
+	#NOTRIM#
+	private void Awake()
+	{
+		#region Persistent Singleton
+		#NOTRIM#
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+			return;
+		}
+		#NOTRIM#
+		DontDestroyOnLoad(gameObject);
+		#NOTRIM#
+		#endregion
+	}
+}

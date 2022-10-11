@@ -1,0 +1,20 @@
+using UnityEngine;
+using UnityEditor;
+#NOTRIM#
+[CustomEditor(typeof(#SCRIPTNAME#))] // <== Reference to original script here remove "Editor".
+public class #SCRIPTNAME# : Editor
+{
+    private SerializedObject myController; //Controller
+    private SerializedProperty myProperty; //Property
+    #NOTRIM#
+    private void OnEnable()
+    {
+        myController = new SerializedObject(target); //Target
+        myProperty = myController.FindProperty("myProperty"); //Property
+    }
+    #NOTRIM#
+    public override void OnInspectorGUI()
+    {
+        EditorGUILayout.PropertyField(myProperty);
+    }
+}

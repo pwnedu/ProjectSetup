@@ -1,22 +1,22 @@
 {
   "name": "com.kiltec.setuptool",
-  "version": "0.0.1-preview.1",
+  "version": "0.0.2-preview.1",
   "displayName": "Project Setup by pwnedu",
   "description": "This is a simple tool that helps with new project setup.",
   "unity": "2018.1",
   "documentationUrl": "https://github.com/pwnedu/SetupTool/wiki",
   "licensesUrl": "https://github.com/pwnedu/UnityTools/blob/main/LICENSE",
   "keywords": [
-  	"unity",
-  	"tools",
-  	"setup",
-  	"productivity",
-  	"pwnedu",
-  	"kiltec"
+    "unity",
+    "tools",
+    "setup",
+    "productivity",
+    "pwnedu",
+    "kiltec"
   ],
   "author": {
-  	"name": "Kiltec",
-  	"url": "https://github.com/pwnedu"
+    "name": "Kiltec",
+    "url": "https://github.com/pwnedu"
   },
   "type": "tool"
 }

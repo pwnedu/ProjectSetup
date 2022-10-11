@@ -1,0 +1,33 @@
+using UnityEngine;
+using UnityEditor;
+#NOTRIM#
+[CustomEditor(typeof(#SCRIPTNAME#))] // <== Reference to original script here remove "Editor".
+public class #SCRIPTNAME# : Editor
+{
+    private #SCRIPTNAME# controller; // <== Reference to original script here remove "Editor".
+    #NOTRIM#
+    private void OnEnable()
+    {
+        controller = target as #SCRIPTNAME#; // <== Reference to original script here remove "Editor".
+    }
+    #NOTRIM#
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+        #NOTRIM#
+        #region Button
+        #NOTRIM#
+        //Draws a button in the inspector.
+        GUILayout.Space(10);
+        GUILayout.BeginHorizontal("Box");
+        if (GUILayout.Button("Button"))
+        {
+            //controller.DoSomething();
+            Debug.Log("Button Pressed!");
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.Space(10);
+        #NOTRIM#
+        #endregion
+    }
+}
