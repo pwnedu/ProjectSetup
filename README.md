@@ -10,9 +10,7 @@
 
 2. Setup your prefered folder structures. 
 
-3. Select 'Create Project Folders' or 
-
-4. Navigate back to the menu bar and select 'Tools' ▶ 'Custom Tools' ▶ 'Project Setup' ▶ 'Create Project Folders'
+3. Select 'Create Project Folders'
 
 ---
 
