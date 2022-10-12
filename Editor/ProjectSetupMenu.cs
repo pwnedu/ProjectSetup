@@ -43,6 +43,14 @@ namespace SetupTool
             CopyFiles(dirPath);
         }
 
+        [MenuItem(menuItem + "Create Special Folders", priority = 11)]
+        public static void CreateSpecialFolders()
+        {
+            FindPreferences();
+            CreateDirectories("", preferenceData.specialFolders);
+            AssetDatabase.Refresh();
+        }
+
         [MenuItem(menuItem + "Create Project Folders", priority = 10)]
         public static void CreateProjectFolders()
         {

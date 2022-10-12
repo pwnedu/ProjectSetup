@@ -7,7 +7,7 @@ namespace SetupTool
     {
         public string projectFolder = "_MyProject";
         public string[] subFolders = new string[11] { "Editor", "Materials", "Models", "Prefabs", "Resources", "Scenes", "Scripts", "Settings", "Shaders", "Sounds", "Textures" };
-        //OTHER FOLDERS: //"Gizmos", "Plugins", "StreamingAssets", "ScriptTemplates"//
+        public string[] specialFolders = new string[6] { "Editor Default Resources", "Gizmos", "Plugins", "ScriptTemplates", "Standard Assets", "StreamingAssets"  };
 
         public FolderStructure[] structures;
     }

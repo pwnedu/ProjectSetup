@@ -13,6 +13,7 @@ namespace SetupTool
         // Extensions
         private SerializedProperty projectFolder;
         private SerializedProperty subFolders;
+        private SerializedProperty specialFolders;
         private SerializedProperty structures;
 
         // Editor Properties
@@ -21,6 +22,7 @@ namespace SetupTool
         GUIStyle slashGUIStyle;
         GUIStyle labelGUIStyle;
         GUIStyle buttonGUIStyle;
+
         GUIContent pathContent;
 
         private Color headingColor = new Color32(225, 205, 140, 255);
@@ -37,6 +39,7 @@ namespace SetupTool
             // Find Property
             projectFolder = styleController.FindProperty("projectFolder");
             subFolders = styleController.FindProperty("subFolders");
+            specialFolders = styleController.FindProperty("specialFolders");
             structures = styleController.FindProperty("structures");
 
             // Creaete Header GUI Style
@@ -117,7 +120,7 @@ namespace SetupTool
             GUI.contentColor = subHeadingColor;
             EditorGUILayout.LabelField($"My Project Folders", EditorStyles.largeLabel);
             GUI.contentColor = previousColour;
-            GUILayout.Space(5);
+            GUILayout.Space(height);
 
             // Folder Setup
             EditorGUILayout.BeginHorizontal();
@@ -151,7 +154,7 @@ namespace SetupTool
             // Area Heading
             GUILayout.Space(height);
             GUI.contentColor = subHeadingColor;
-            EditorGUILayout.LabelField($"My Sub Structure", EditorStyles.largeLabel);
+            EditorGUILayout.LabelField($"My Sub Structures", EditorStyles.largeLabel);
             GUI.contentColor = previousColour;
             GUILayout.Space(height);
 
@@ -190,6 +193,23 @@ namespace SetupTool
             }
             EditorGUILayout.EndHorizontal();
 
+            // Area Heading
+            GUILayout.Space(height);
+            GUI.contentColor = subHeadingColor;
+            EditorGUILayout.LabelField($"Unity Special Folders", EditorStyles.largeLabel);
+            GUI.contentColor = previousColour;
+            GUILayout.Space(height);
+
+            // Custom Structures
+            EditorGUILayout.PropertyField(specialFolders);
+
+            GUIContent special = new GUIContent() { text = "Create Unity Special Folders", tooltip = "Create all the Unity special folders." };
+            if (GUILayout.Button(special, buttonGUIStyle))
+            {
+                ProjectSetupMenu.CreateSpecialFolders();
+                PingFolder();
+            }
+
             if (EditorGUI.EndChangeCheck())
             {
                 styleController.ApplyModifiedProperties();
@@ -210,6 +230,14 @@ namespace SetupTool
             {
                 ProjectSetupMenu.CreateDirectories(setupFolders.structures[i].assetFolderPath, setupFolders.structures[i].subFolders);
             }
+        }
+
+        private void PingFolder()
+        {
+            AssetDatabase.Refresh();
+
+            var asset = AssetDatabase.LoadAssetAtPath<Object>("Assets");
+            EditorGUIUtility.PingObject(asset);
         }
 
         private void PingFolder(string folder)
