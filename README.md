@@ -22,9 +22,9 @@
 
 1. Inside Unity navigate to to the menu bar and select 'Tools' ▶ 'Custom Tools' ▶ 'Project Setup' ▶ 'Import Script Templates'
 
-* Define Namespace in Edit > Project Settings > Editor > Root Namespace    
-* Define Author in Edit > Project Settings > Player > Company Name         
-* Define Project in Edit > Project Settings > Player > Product Name        
+* Define the Namespace in 'Edit' ▶ 'Project Settings' ▶ 'Editor' ▶ 'Root Namespace'    
+* Define the Author in 'Edit' ▶ 'Project Settings' ▶ 'Player' ▶ 'Company Name'         
+* Define the Project in 'Edit' ▶ 'Project Settings' ▶ 'Player' ▶ 'Product Name'        
 
 #### Template Keywords List #### 
 
