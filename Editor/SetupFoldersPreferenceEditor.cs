@@ -139,10 +139,11 @@ namespace SetupTool
                 ProjectSetupMenu.CreateDirectories(setupFolders.projectFolder, setupFolders.subFolders);
                 PingFolder(setupFolders.projectFolder);
             }
-            GUIContent every = new GUIContent() { text = "Create Selected", tooltip = "Create all folders listed for setup at once." };
+            GUIContent every = new GUIContent() { text = "Create All Folders", tooltip = "Create all folders listed for setup at once." };
             if (GUILayout.Button(every, buttonGUIStyle))
             {
                 ProjectSetupMenu.CreateDirectories(setupFolders.projectFolder, setupFolders.subFolders);
+                ProjectSetupMenu.CreateSpecialFolders();
                 CreateAllSubFolders();
                 PingFolder(setupFolders.structures[selected].assetFolderPath);
             }
@@ -162,37 +163,38 @@ namespace SetupTool
             EditorGUILayout.PropertyField(structures);
             GUILayout.Space(height);
 
-            if (setupFolders.structures.Length == 0) { return; }
-
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Selection: " + setupFolders.structures[selected].assetFolderPath, labelGUIStyle, GUILayout.MinWidth(90));
-            if (GUILayout.Button("<", buttonGUIStyle, GUILayout.Width(width)))
+            if (setupFolders.structures.Length > 0)
             {
-                if (selected == 0) { selected = maxLength; }
-                else { selected -= 1; }
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("Selection: " + setupFolders.structures[selected].assetFolderPath, labelGUIStyle, GUILayout.MinWidth(90));
+                if (GUILayout.Button("<", buttonGUIStyle, GUILayout.Width(width)))
+                {
+                    if (selected == 0) { selected = maxLength; }
+                    else { selected -= 1; }
+                }
+                selected = EditorGUILayout.IntField(selected, GUILayout.Width(width));
+                if (GUILayout.Button(">", buttonGUIStyle, GUILayout.Width(width)))
+                {
+                    if (selected == maxLength) { selected = 0; }
+                    else { selected += 1; }
+                }
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+                GUIContent select = new GUIContent() { text = "Create Selected", tooltip = "Create the selected folder structure." };
+                if (GUILayout.Button(select, buttonGUIStyle))
+                {
+                    ProjectSetupMenu.CreateDirectories(setupFolders.structures[selected].assetFolderPath, setupFolders.structures[selected].subFolders);
+                    PingFolder(setupFolders.structures[selected].assetFolderPath);
+                }
+                GUIContent multi = new GUIContent() { text = "Create Multiple", tooltip = "Create all the sub folder structures at once." };
+                if (GUILayout.Button(multi, buttonGUIStyle))
+                {
+                    CreateAllSubFolders();
+                    PingFolder(setupFolders.structures[selected].assetFolderPath);
+                }
+                EditorGUILayout.EndHorizontal();
             }
-            selected = EditorGUILayout.IntField(selected, GUILayout.Width(width));
-            if (GUILayout.Button(">", buttonGUIStyle, GUILayout.Width(width)))
-            {
-                if (selected == maxLength) { selected = 0; }
-                else { selected += 1; }
-            }
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.BeginHorizontal();
-            GUIContent select = new GUIContent() { text = "Create Selected", tooltip = "Create the selected folder structure." };
-            if (GUILayout.Button(select, buttonGUIStyle))
-            {
-                ProjectSetupMenu.CreateDirectories(setupFolders.structures[selected].assetFolderPath, setupFolders.structures[selected].subFolders);
-                PingFolder(setupFolders.structures[selected].assetFolderPath);
-            }
-            GUIContent multi = new GUIContent() { text = "Create Multiple", tooltip = "Create all the sub folder structures at once."};
-            if (GUILayout.Button(multi, buttonGUIStyle))
-            {
-                CreateAllSubFolders();
-                PingFolder(setupFolders.structures[selected].assetFolderPath);
-            }
-            EditorGUILayout.EndHorizontal();
-
+            
             // Area Heading
             GUILayout.Space(height);
             GUI.contentColor = subHeadingColor;
