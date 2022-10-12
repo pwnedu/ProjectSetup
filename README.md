@@ -1,8 +1,8 @@
 # SetupTool #
 
-### Setup a default project ###
+### Setup Default Project Structure ###
 
-#### Setup a default folders ####
+#### Setup Folders ####
 
 ---
 
