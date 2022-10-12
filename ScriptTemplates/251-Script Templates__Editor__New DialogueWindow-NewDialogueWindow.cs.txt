@@ -1,0 +1,74 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+using UnityEditor;
+
+#ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : EditorWindow
+{
+	string entry;
+	string entryFieldResult;
+
+	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
+	static void TestFromMenu()
+	{
+		ShowDialog("My Window", "Some Input");
+    }
+
+	public static string ShowDialog(string windowName, string entry)
+	{
+		#SCRIPTNAME# dialog = CreateInstance<#SCRIPTNAME#>();
+		dialog.titleContent = new GUIContent(windowName);
+
+		dialog.minSize = new Vector2(320, 120);
+		dialog.maxSize = new Vector2(320, 120);
+
+		dialog.entry = entry;
+		dialog.entryFieldResult = entry;
+
+		dialog.ShowModal();
+
+		return dialog.entryFieldResult;
+	}
+
+	private void OnGUI()
+	{
+		GUILayout.Space(20);
+		entryFieldResult = EditorGUILayout.TextField(entryFieldResult, GUILayout.Width(310));
+		GUILayout.FlexibleSpace();
+
+		GUILayout.BeginHorizontal();
+		GUILayout.FlexibleSpace();
+
+		if (GUILayout.Button("Cancel", GUILayout.Width(100)))
+		{
+			Cancelled();
+		}
+
+		if (GUILayout.Button("Okay", GUILayout.Width(100)))
+		{
+			Accepted();
+		}
+
+		GUILayout.EndHorizontal();
+    }
+
+	private void Accepted()
+	{
+		if (!string.IsNullOrEmpty(entryFieldResult))
+		{
+			Close();
+		}
+	}
+
+	private void Cancelled()
+	{
+		entryFieldResult = entry;
+		Close();
+	}
+}
+#ROOTNAMESPACEEND#

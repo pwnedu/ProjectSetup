@@ -1,0 +1,41 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+// NOTE: Put in an editor folder. //
+
+using UnityEngine;
+using UnityEditor;
+
+#ROOTNAMESPACEBEGIN#
+[CustomPropertyDrawer(typeof(#SCRIPTNAME#Attribute))]
+public class #SCRIPTNAME#PropertyDrawer : PropertyDrawer
+{
+	public override float GetHeight()
+	{
+		#region  Property Height Overrides
+
+		return base.GetHeight();
+
+		#endregion
+	}
+
+	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+	{
+		#region  Property Drawer Overrides
+
+		// Start Property Field
+		EditorGUI.BeginProperty(position, label, property);
+
+		// Draw field
+		EditorGUI.PropertyField(position, property, label);
+
+		// End Property Field
+		EditorGUI.EndProperty();
+
+		#endregion
+	}
+}
+#ROOTNAMESPACEEND#

@@ -1,0 +1,41 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+// Base class (parent).
+class #SCRIPTNAME#Base
+{
+    public void TestMethod()
+    {
+        Debug.Log("Base Method");
+    }
+}
+
+// Derived class (child).
+class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
+{
+    public new void TestMethod()
+    {
+        Debug.Log("Derived Method");
+    }
+}
+
+// Using the Polymorphism inheritance.
+class #SCRIPTNAME# : MonoBehaviour
+{
+    private void Start() 
+    {
+        // Create and use the test objects.
+        #SCRIPTNAME#Base myBase = new #SCRIPTNAME#Base();
+        #SCRIPTNAME#Derived myType = new #SCRIPTNAME#Derived();
+
+        myBase.TestMethod();
+        myType.TestMethod();
+    }
+}
+#ROOTNAMESPACEEND#

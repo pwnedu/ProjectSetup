@@ -1,0 +1,44 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+// Abstract parent class
+abstract class #SCRIPTNAME#Base 
+{
+    // Abstract method (does not have a body).
+    public abstract void AbstractMethod();
+    
+    // Regular non derived method
+    public void RegularMethod()
+    {
+        Debug.Log("Regular Method");
+    }
+}
+
+// Derived class (inherited from #SCRIPTNAME#Base)
+class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
+{
+    public override void AbstractMethod() 
+    {
+        // The body of AbstractMethod() is provided here.
+        Debug.Log("Abstract Method");
+    }
+}
+
+// Using the interface
+class #SCRIPTNAME# : MonoBehaviour
+{
+    private void Start() 
+    {
+        // Create and use the test object.
+        #SCRIPTNAME#Derived myType = new #SCRIPTNAME#Derived();
+        myType.AbstractMethod();
+        myType.RegularMethod();
+    }
+}
+#ROOTNAMESPACEEND#

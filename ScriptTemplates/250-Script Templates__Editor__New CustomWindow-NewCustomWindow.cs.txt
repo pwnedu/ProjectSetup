@@ -1,0 +1,56 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+using UnityEditor;
+
+#ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : EditorWindow
+{
+	public static #SCRIPTNAME# window;
+
+	readonly float windowWidth = 660f;
+	readonly float windowHeight = 220f;
+
+	Rect buttonPos = new Rect();
+
+	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
+    public static void Init()
+	{
+		if (window == null)
+		{
+		    window = CreateInstance<#SCRIPTNAME#>();
+		} 
+		else
+		{
+		    window.Focus();
+		}
+		
+		var resolution = Screen.currentResolution;
+		var width = window.windowWidth;
+		var height = window.windowHeight;
+		window.position = new Rect((resolution.width * 0.5f) - (width * 0.5f), (resolution.height * 0.5f) - (height * 0.5f), width, height);
+		window.ShowPopup();
+	}
+
+	private void OnEnable()
+	{
+        buttonPos.x = windowWidth - 36f;
+        buttonPos.y = 15f;
+        buttonPos.width = 20f;
+        buttonPos.height = 20f;
+    }
+
+	private void OnGUI()
+	{
+		GUILayout.Label("#SCRIPTNAME# Heading", EditorStyles.largeLabel);
+
+        GUILayout.BeginArea(buttonPos);
+        if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(20))) { this.Close(); }
+        GUILayout.EndArea();
+    }
+}
+#ROOTNAMESPACEEND#

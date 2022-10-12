@@ -1,0 +1,15 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+[CreateAssetMenu(fileName = "New #SCRIPTNAME#", menuName = "My Assets/Create #SCRIPTNAME#")]
+public class #SCRIPTNAME# : ScriptableObject
+{
+	#NOTRIM#
+}
+#ROOTNAMESPACEEND#

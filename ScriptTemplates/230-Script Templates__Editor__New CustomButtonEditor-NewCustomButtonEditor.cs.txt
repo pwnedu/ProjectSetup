@@ -1,22 +1,31 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
 using UnityEngine;
 using UnityEditor;
-#NOTRIM#
+
+#ROOTNAMESPACEBEGIN#
 [CustomEditor(typeof(#SCRIPTNAME#))] // <== Reference to original script here remove "Editor".
 public class #SCRIPTNAME# : Editor
 {
     private #SCRIPTNAME# controller; // <== Reference to original script here remove "Editor".
-    #NOTRIM#
+
     private void OnEnable()
     {
         controller = target as #SCRIPTNAME#; // <== Reference to original script here remove "Editor".
     }
-    #NOTRIM#
+
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        #NOTRIM#
+
+        EditorGUI.BeginChangeCheck();
+
         #region Button
-        #NOTRIM#
+
         //Draws a button in the inspector.
         GUILayout.Space(10);
         GUILayout.BeginHorizontal("Box");
@@ -27,7 +36,13 @@ public class #SCRIPTNAME# : Editor
         }
         GUILayout.EndHorizontal();
         GUILayout.Space(10);
-        #NOTRIM#
+
         #endregion
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(controller, controller.name);
+        }
     }
 }
+#ROOTNAMESPACEEND#

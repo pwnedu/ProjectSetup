@@ -1,0 +1,36 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+// Interface
+interface I#SCRIPTNAME# 
+{
+    void InterfaceMethod(); // Interface method (does not have a body).
+}
+
+// Implements the I#SCRIPTNAME# interface
+class #SCRIPTNAME#Implementation : I#SCRIPTNAME# 
+{
+    public void InterfaceMethod() 
+    {
+        // The body of InterfaceMethod() is provided here.
+        Debug.Log("Interface Test");
+    }
+}
+
+// Using the interface
+class #SCRIPTNAME# : MonoBehaviour
+{
+    private void Start() 
+    {
+        // Create and use the implemented interface object.
+        #SCRIPTNAME#Implementation myTest = new #SCRIPTNAME#Implementation();
+        myTest.InterfaceMethod();
+    }
+}
+#ROOTNAMESPACEEND#

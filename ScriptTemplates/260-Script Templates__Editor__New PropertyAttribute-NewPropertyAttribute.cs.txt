@@ -1,0 +1,17 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+// NOTE: DON'T put in an editor folder. //
+
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+[System.AttributeUsage(System.AttributeTargets.Field)]
+public class #SCRIPTNAME#Attribute : PropertyAttribute
+{
+	#NOTRIM#
+}
+#ROOTNAMESPACEEND#

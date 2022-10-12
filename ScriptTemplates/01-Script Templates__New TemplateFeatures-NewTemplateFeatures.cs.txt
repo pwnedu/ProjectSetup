@@ -1,0 +1,14 @@
+#ROOTNAMESPACEBEGIN#
+[System.Serializable]
+public class #SCRIPTNAME#
+{
+	public string named = "#NAME#";
+	public string scriptName = "#SCRIPTNAME#";
+	public string scriptNameLower = "#SCRIPTNAME_LOWER#";
+	public string primaryScriptName = "#PRIMARY_SCRIPTNAME#";
+	public string dateTimeNow = "#CREATION_DATE#";
+	public string author = "#DEVELOPER_NAME#";
+	public string project = "#PROJECT_NAME#";
+	#NOTRIM#
+}
+#ROOTNAMESPACEEND#

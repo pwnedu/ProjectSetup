@@ -1,0 +1,35 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+using UnityEditor;
+
+#ROOTNAMESPACEBEGIN#
+[CustomEditor(typeof(#SCRIPTNAME#))] // <== Reference to original script here remove "Editor".
+public class #SCRIPTNAME# : Editor
+{
+    private #SCRIPTNAME# controller; // <== Reference to original script here remove "Editor".
+
+    private void OnEnable()
+    {
+        controller = target as #SCRIPTNAME#; // <== Reference to original script here remove "Editor".
+    }
+
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        EditorGUI.BeginChangeCheck();
+
+        // Do something here.
+        
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(controller, controller.name);
+        }
+    }
+}
+#ROOTNAMESPACEEND#
