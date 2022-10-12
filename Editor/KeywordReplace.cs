@@ -10,6 +10,7 @@ namespace SetupTool
         {
             path = path.Replace(".meta", "");
             int index = path.LastIndexOf(".");
+            if (index < 0) { return; }
             string file = path.Substring(index);
 
             string myPath = path;

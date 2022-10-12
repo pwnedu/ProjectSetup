@@ -8,17 +8,8 @@ using UnityEngine;
 using UnityEditor;
 
 #ROOTNAMESPACEBEGIN#
-[CustomEditor(typeof(#SCRIPTNAME#))] // <== Reference to original script here remove "Editor".
 public class #SCRIPTNAME# : Editor
 {
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        serializedObject.Update();
-
-        // Do something here.
-
-        serializedObject.ApplyModifiedProperties();
-    }
+	#NOTRIM#
 }
 #ROOTNAMESPACEEND#

@@ -90,7 +90,7 @@ namespace SetupTool
                 }
             }
 
-            Debug.Log("Unity must be restarted to use the new script templates!");
+            Debug.LogWarning("Unity must be restarted to use the new script templates!");
             AssetDatabase.Refresh();
         }
     }
