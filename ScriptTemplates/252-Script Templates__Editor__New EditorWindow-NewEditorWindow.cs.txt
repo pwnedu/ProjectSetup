@@ -13,7 +13,7 @@ public class #SCRIPTNAME# : EditorWindow
 	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
 	public static void ShowWindow()
 	{
-		GetWindow<#SCRIPTNAME#>("#SCRIPTNAME# Name");
+		GetWindow<#SCRIPTNAME#>("#SCRIPTNAME#");
 	}
 
 	private void OnGUI()

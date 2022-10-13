@@ -16,7 +16,7 @@ public class #SCRIPTNAME# : EditorWindow
 	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
 	static void TestFromMenu()
 	{
-		ShowDialog("My Window", "Some Input");
+		ShowDialog("#SCRIPTNAME#", "Some Input");
     }
 
 	public static string ShowDialog(string windowName, string entry)
@@ -38,7 +38,10 @@ public class #SCRIPTNAME# : EditorWindow
 	private void OnGUI()
 	{
 		GUILayout.Space(20);
-		entryFieldResult = EditorGUILayout.TextField(entryFieldResult, GUILayout.Width(310));
+		GUILayout.BeginHorizontal();
+		GUILayout.Space(20);
+		entryFieldResult = EditorGUILayout.TextField(entryFieldResult, GUILayout.Width(280));
+		GUILayout.EndHorizontal();
 		GUILayout.FlexibleSpace();
 
 		GUILayout.BeginHorizontal();
