@@ -4,7 +4,7 @@
 //	Date	: #CREATION_DATE#
 //-----------------------------------------------------------------
 
-#ROOTNAMESPACEBEGIN#
+	#ROOTNAMESPACEBEGIN#
 interface #SCRIPTNAME#
 {
 	#NOTRIM#    

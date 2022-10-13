@@ -9,7 +9,7 @@
 using UnityEngine;
 using UnityEditor;
 
-#ROOTNAMESPACEBEGIN#
+	#ROOTNAMESPACEBEGIN#
 [CustomPropertyDrawer(typeof(#SCRIPTNAME#Attribute))]
 public class #SCRIPTNAME#PropertyDrawer : PropertyDrawer
 {

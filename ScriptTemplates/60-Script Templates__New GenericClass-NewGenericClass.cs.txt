@@ -6,8 +6,8 @@
 
 	#ROOTNAMESPACEBEGIN#
 [System.Serializable]
-public struct #SCRIPTNAME#
+public class #SCRIPTNAME#<T>
 {
-	#NOTRIM#
+	public T Data { get; set; }
 }
 #ROOTNAMESPACEEND#

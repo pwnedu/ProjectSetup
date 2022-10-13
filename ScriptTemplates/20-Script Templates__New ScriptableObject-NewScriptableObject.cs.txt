@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-#ROOTNAMESPACEBEGIN#
+	#ROOTNAMESPACEBEGIN#
 [CreateAssetMenu(fileName = "New #SCRIPTNAME#", menuName = "My Assets/Create #SCRIPTNAME#")]
 public class #SCRIPTNAME# : ScriptableObject
 {

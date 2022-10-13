@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-#ROOTNAMESPACEBEGIN#
+    #ROOTNAMESPACEBEGIN#
 abstract class #SCRIPTNAME#
 {
     // Abstract method

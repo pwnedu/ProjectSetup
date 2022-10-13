@@ -11,7 +11,9 @@ namespace SetupTool
             path = path.Replace(".meta", "");
             int index = path.LastIndexOf(".");
             if (index < 0) { return; }
+
             string file = path.Substring(index);
+            if (file != ".cs" && file != ".js" && file != ".boo") { return; }
 
             string myPath = path;
             int folderIndex = myPath.LastIndexOf("/");
@@ -23,20 +25,20 @@ namespace SetupTool
             char[] charArray2 = fileName.ToCharArray();
             string[] myName = fileName.Split(charArray2[extensionIndex]);
 
-            if (file != ".cs" && file != ".js" && file != ".boo") return;
             index = Application.dataPath.LastIndexOf("Assets");
             path = Application.dataPath.Substring(0, index) + path;
+            if (!File.Exists(path)) { return; }
 
-            file = File.ReadAllText(path);
+            string fileContent = File.ReadAllText(path);
 
-            file = file.Replace("#CREATION_DATE#", System.DateTime.Now + "");
-            file = file.Replace("#PROJECT_NAME#", PlayerSettings.productName);
-            file = file.Replace("#DEVELOPER_NAME#", PlayerSettings.companyName);
+            fileContent = fileContent.Replace("#CREATION_DATE#", System.DateTime.Now + "");
+            fileContent = fileContent.Replace("#PROJECT_NAME#", PlayerSettings.productName);
+            fileContent = fileContent.Replace("#DEVELOPER_NAME#", PlayerSettings.companyName);
 
             string noEditor = myName[0].Replace("Editor", "");
-            file = file.Replace("#PRIMARY_SCRIPTNAME#", noEditor);
+            fileContent = fileContent.Replace("#PRIMARY_SCRIPTNAME#", noEditor);
 
-            File.WriteAllText(path, file);
+            File.WriteAllText(path, fileContent);
             AssetDatabase.Refresh();
         }
     }

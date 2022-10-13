@@ -8,7 +8,7 @@
 
 using UnityEngine;
 
-#ROOTNAMESPACEBEGIN#
+	#ROOTNAMESPACEBEGIN#
 [System.AttributeUsage(System.AttributeTargets.Field)]
 public class #SCRIPTNAME#Attribute : PropertyAttribute
 {

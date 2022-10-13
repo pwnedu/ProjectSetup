@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-#ROOTNAMESPACEBEGIN#
+    #ROOTNAMESPACEBEGIN#
 // Abstract parent class
 abstract class #SCRIPTNAME#Base 
 {
