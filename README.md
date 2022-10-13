@@ -16,13 +16,13 @@
 
 ### Setup Script Templates ###
 
-#### Define Templates ####
+#### Setup and define templates ####
 
 ---
 
 1. Inside Unity navigate to to the menu bar and select 'Tools' ▶ 'Custom Tools' ▶ 'Project Setup' ▶ 'Import Script Templates'
 
-2. Setup Definitions
+2. Setup definitions:
 
 	* Define the Namespace in 'Edit' ▶ 'Project Settings' ▶ 'Editor' ▶ 'Root Namespace'    
 	* Define the Author in 'Edit' ▶ 'Project Settings' ▶ 'Player' ▶ 'Company Name'         
@@ -33,16 +33,16 @@
 ---
 
 Unity Default:
-* #ROOTNAMESPACEBEGIN#
-* #ROOTNAMESPACEEND#
-* #NAME#
-* #SCRIPTNAME#
-* #SCRIPTNAME_LOWER#
+	* #ROOTNAMESPACEBEGIN#
+	* #ROOTNAMESPACEEND#
+	* #NAME#
+	* #SCRIPTNAME#
+	* #SCRIPTNAME_LOWER#
 
 Package Extras:
-* #PRIMARY_SCRIPTNAME#
-* #CREATION_DATE#
-* #DEVELOPER_NAME#
-* #PROJECT_NAME#
+	* #PRIMARY_SCRIPTNAME#
+	* #CREATION_DATE#
+	* #DEVELOPER_NAME#
+	* #PROJECT_NAME#
 
 ---
