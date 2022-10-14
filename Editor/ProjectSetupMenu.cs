@@ -1,3 +1,4 @@
+using UnityEngine.Rendering;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -42,7 +43,32 @@ namespace SetupTool
         [MenuItem(menuItem + "Import Templates/Shader Templates", priority = 22)]
         public static void ImportShaderTemplates()
         {
-            CopyFiles("ShaderTemplates", DestinationPath());
+            // Get Render Pipeline
+            var pipeline = GraphicsSettings.currentRenderPipeline;
+            Renderer renderer;
+
+            if (pipeline == null) 
+            { 
+                renderer = Renderer.SRP;
+                CopyFiles($"ShaderTemplates/SRP", DestinationPath());
+            }
+            else if (pipeline.ToString().Contains("Universal"))
+            { 
+                renderer = Renderer.URP;
+                CopyFiles($"ShaderTemplates/URP", DestinationPath());
+            }
+            else if (pipeline.ToString().Contains("Lightweight"))
+            {
+                renderer = Renderer.LWRP;
+                CopyFiles($"ShaderTemplates/URP", DestinationPath());
+            }
+            else 
+            { 
+                renderer = Renderer.HDRP;
+                CopyFiles($"ShaderTemplates/HDRP", DestinationPath());
+            }
+
+            Debug.Log($"Shader Templates imported for current Render Pipeline: {renderer}");
         }
 
         [MenuItem(menuItem + "Import Templates/File Templates", priority = 23)]
@@ -133,6 +159,14 @@ namespace SetupTool
 
             Debug.LogWarning($"Unity must be restarted to use the new {sourcePath}!");
             AssetDatabase.Refresh();
+        }
+    
+        private enum Renderer
+        {
+            SRP,
+            HDRP,
+            LWRP,
+            URP
         }
     }
 }

@@ -1,4 +1,4 @@
-Shader "Custom/#NAME#"
+Shader "SRP/Custom Shaders/Surface/#NAME#"
 {
     Properties
     {
