@@ -1,6 +1,6 @@
 {
   "name": "com.kiltec.setuptool",
-  "version": "0.0.4-preview.1",
+  "version": "0.0.5-preview.1",
   "displayName": "Project Setup by pwnedu",
   "description": "This is a simple tool that helps with new project setup.",
   "unity": "2018.1",
