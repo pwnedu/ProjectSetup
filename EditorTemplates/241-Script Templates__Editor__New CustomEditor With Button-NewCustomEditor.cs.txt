@@ -11,38 +11,55 @@ using UnityEditor;
 [CustomEditor(typeof(#PRIMARY_SCRIPTNAME#))] // <== Reference to original script.
 public class #SCRIPTNAME# : Editor
 {
+    #region Private Fields
+
     private #PRIMARY_SCRIPTNAME# controller;
+
+    #endregion
 
     private void OnEnable()
     {
+        #region Setup Controller
+
         controller = target as #PRIMARY_SCRIPTNAME#;
+    
+        #endregion
     }
 
     public override void OnInspectorGUI()
     {
+        #region Inspector GUI Overrides
+
+        EditorGUILayout.LabelField("Custom Editor Display", EditorStyles.largeLabel);
+
         DrawDefaultInspector();
 
         EditorGUI.BeginChangeCheck();
 
-        #region Button
-
-        //Draws a button in the inspector.
-        GUILayout.Space(10);
-        GUILayout.BeginHorizontal("Box");
-        if (GUILayout.Button("Button"))
-        {
-            //controller.DoSomething();
-            Debug.Log("Button Pressed!");
-        }
-        GUILayout.EndHorizontal();
-        GUILayout.Space(10);
-
-        #endregion
+        DrawButton();
 
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(controller, controller.name);
         }
+
+        #endregion
+    }
+
+    private void DrawButton()
+    {
+        #region Draw Button In Inspector
+
+        GUILayout.Space(5);
+        GUILayout.BeginHorizontal("Box");
+        if (GUILayout.Button("Button", GUILayout.Height(25)))
+        {
+            //controller.DoSomethingHere();
+            Debug.Log("Button Pressed!");
+        }
+        GUILayout.EndHorizontal();
+
+        #endregion
     }
 }
 #ROOTNAMESPACEEND#

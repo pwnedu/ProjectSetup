@@ -9,6 +9,8 @@ using UnityEngine;
 	#ROOTNAMESPACEBEGIN#
 public class Constructor#SCRIPTNAME#
 {
+	#region Constructor
+	
 	// Public field
 	public string build;  
 
@@ -17,10 +19,14 @@ public class Constructor#SCRIPTNAME#
 	{
 		build = buildType;
 	}
+
+	#endregion
 }
 
 public class #SCRIPTNAME# : MonoBehaviour
 {
+	#region MonoBehaviour Test
+	
 	[SerializeField] private string buildType = "TestType";
 
 	private void Start()
@@ -28,5 +34,7 @@ public class #SCRIPTNAME# : MonoBehaviour
 		Constructor#SCRIPTNAME# #SCRIPTNAME_LOWER# = new Constructor#SCRIPTNAME#(buildType);
 		Debug.Log(#SCRIPTNAME_LOWER#.build);
 	}
+
+	#endregion
 }
 #ROOTNAMESPACEEND#

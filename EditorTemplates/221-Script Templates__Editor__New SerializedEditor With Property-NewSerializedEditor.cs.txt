@@ -11,22 +11,36 @@ using UnityEditor;
 [CustomEditor(typeof(#PRIMARY_SCRIPTNAME#))] // <== Reference to original script.
 public class #SCRIPTNAME# : Editor
 {
+    #region Serialized Fields
+
     private SerializedObject myController; //Controller
     private SerializedProperty myProperty; //Property
 
+    #endregion
+
     private void OnEnable()
     {
-        myController = new SerializedObject(target); //Target
-        myProperty = myController.FindProperty("myProperty"); //Property
+        #region Setup Controller and Find Properties
+
+        myController = new SerializedObject(target); //Find Controller
+        myProperty = myController.FindProperty("myProperty"); //Find Property
+
+        #endregion
     }
 
     public override void OnInspectorGUI()
     {
+        #region Inspector GUI Overrides
+
+        EditorGUILayout.LabelField("Serialised Custom Editor", EditorStyles.largeLabel);
+
         serializedObject.Update();
 
-        EditorGUILayout.PropertyField(myProperty);
+        EditorGUILayout.PropertyField(myProperty); //Show Property
 
         serializedObject.ApplyModifiedProperties();
+
+        #endregion
     }
 }
 #ROOTNAMESPACEEND#

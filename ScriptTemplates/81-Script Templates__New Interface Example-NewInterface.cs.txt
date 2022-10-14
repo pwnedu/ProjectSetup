@@ -16,21 +16,29 @@ interface I#SCRIPTNAME#
 // Implements the I#SCRIPTNAME# interface
 class #SCRIPTNAME#Implementation : I#SCRIPTNAME# 
 {
+    #region Implementation
+
     public void InterfaceMethod() 
     {
         // The body of InterfaceMethod() is provided here.
         Debug.Log("Interface Test");
     }
+
+    #endregion
 }
 
 // Using the interface
 class #SCRIPTNAME# : MonoBehaviour
 {
+    #region MonoBehaviour Test
+
     private void Start() 
     {
         // Create and use the implemented interface object.
         #SCRIPTNAME#Implementation myTest = new #SCRIPTNAME#Implementation();
         myTest.InterfaceMethod();
     }
+
+    #endregion
 }
 #ROOTNAMESPACEEND#

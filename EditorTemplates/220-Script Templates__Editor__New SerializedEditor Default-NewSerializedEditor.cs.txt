@@ -13,12 +13,19 @@ public class #SCRIPTNAME# : Editor
 {
     public override void OnInspectorGUI()
     {
+        #region Inspector GUI Overrides
+
+        EditorGUILayout.LabelField("Serialised Custom Editor", EditorStyles.largeLabel);
+
         base.OnInspectorGUI();
+
         serializedObject.Update();
 
         // Do something here.
 
         serializedObject.ApplyModifiedProperties();
+    
+        #endregion
     }
 }
 #ROOTNAMESPACEEND#

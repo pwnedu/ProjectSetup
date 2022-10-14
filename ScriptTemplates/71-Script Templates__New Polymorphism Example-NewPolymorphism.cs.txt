@@ -10,24 +10,34 @@ using UnityEngine;
 // Base class (parent).
 class #SCRIPTNAME#Base
 {
+    #region Parent Class
+
     public void TestMethod()
     {
         Debug.Log("Base Method");
     }
+
+    #endregion
 }
 
 // Derived class (child).
 class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
 {
+    #region Child Class
+
     public new void TestMethod()
     {
         Debug.Log("Derived Method");
     }
+
+    #endregion
 }
 
 // Using the Polymorphism inheritance.
 class #SCRIPTNAME# : MonoBehaviour
 {
+    #region MonoBehaviour Test
+
     private void Start() 
     {
         // Create and use the test objects.
@@ -37,5 +47,7 @@ class #SCRIPTNAME# : MonoBehaviour
         myBase.TestMethod();
         myType.TestMethod();
     }
+
+    #endregion
 }
 #ROOTNAMESPACEEND#

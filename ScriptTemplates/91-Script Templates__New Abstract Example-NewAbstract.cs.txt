@@ -7,9 +7,11 @@
 using UnityEngine;
 
     #ROOTNAMESPACEBEGIN#
-// Abstract parent class
+// Abstract base class
 abstract class #SCRIPTNAME#Base 
 {
+    #region Parent Class
+
     // Abstract method (does not have a body).
     public abstract void AbstractMethod();
     
@@ -18,21 +20,29 @@ abstract class #SCRIPTNAME#Base
     {
         Debug.Log("Regular Method");
     }
+
+    #endregion
 }
 
 // Derived class (inherited from #SCRIPTNAME#Base)
 class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
 {
+    #region Child Class
+
     public override void AbstractMethod() 
     {
         // The body of AbstractMethod() is provided here.
         Debug.Log("Abstract Method");
     }
+
+    #endregion
 }
 
 // Using the interface
 class #SCRIPTNAME# : MonoBehaviour
 {
+    #region MonoBehaviour Test
+
     private void Start() 
     {
         // Create and use the test object.
@@ -40,5 +50,7 @@ class #SCRIPTNAME# : MonoBehaviour
         myType.AbstractMethod();
         myType.RegularMethod();
     }
+
+    #endregion
 }
 #ROOTNAMESPACEEND#

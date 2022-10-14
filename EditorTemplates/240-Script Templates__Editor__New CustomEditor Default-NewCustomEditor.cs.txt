@@ -11,17 +11,29 @@ using UnityEditor;
 [CustomEditor(typeof(#PRIMARY_SCRIPTNAME#))] // <== Reference to original script.
 public class #SCRIPTNAME# : Editor
 {
+    #region Private Fields
+
     private #PRIMARY_SCRIPTNAME# controller;
+
+    #endregion
 
     private void OnEnable()
     {
+        #region Setup Controller
+    
         controller = target as #PRIMARY_SCRIPTNAME#;
+    
+        #endregion
     }
 
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
+        #region Inspector GUI Overrides
 
+        EditorGUILayout.LabelField("Custom Editor Display", EditorStyles.largeLabel);
+
+        DrawDefaultInspector();
+        
         EditorGUI.BeginChangeCheck();
 
         // Do something here.
@@ -30,6 +42,8 @@ public class #SCRIPTNAME# : Editor
         {
             Undo.RecordObject(controller, controller.name);
         }
+
+        #endregion
     }
 }
 #ROOTNAMESPACEEND#
