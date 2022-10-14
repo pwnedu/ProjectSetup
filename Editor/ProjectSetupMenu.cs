@@ -11,6 +11,55 @@ namespace SetupTool
         const string menuItem = "Tools/Custom Tools/Project Setup/";
         const string toolPath = "Packages/com.kiltec.setuptool/";
 
+        [MenuItem(menuItem + "Create Folders/Special Folders", priority = 11)]
+        public static void CreateSpecialFolders()
+        {
+            FindPreferences();
+            CreateDirectories("", preferenceData.specialFolders);
+            AssetDatabase.Refresh();
+        }
+
+        [MenuItem(menuItem + "Create Folders/Project Folders", priority = 10)]
+        public static void CreateProjectFolders()
+        {
+            FindPreferences();
+            CreateDirectories(preferenceData.projectFolder, preferenceData.subFolders);
+            AssetDatabase.Refresh();
+        }
+
+        [MenuItem(menuItem + "Import Templates/Script Templates", priority = 20)]
+        public static void ImportScriptTemplates()
+        {
+            CopyFiles("ScriptTemplates", DestinationPath());
+        }
+
+        [MenuItem(menuItem + "Import Templates/Editor Templates", priority = 21)]
+        public static void ImportEditorTemplates()
+        {
+            CopyFiles("EditorTemplates", DestinationPath());
+        }
+
+        [MenuItem(menuItem + "Import Templates/Shader Templates", priority = 22)]
+        public static void ImportShaderTemplates()
+        {
+            CopyFiles("ShaderTemplates", DestinationPath());
+        }
+
+        [MenuItem(menuItem + "Import Templates/File Templates", priority = 23)]
+        public static void ImportFileTemplates()
+        {
+            CopyFiles("FileTemplates", DestinationPath());
+        }
+
+        [MenuItem(menuItem + "Import Templates/All Templates", priority = 60)]
+        public static void ImportAllTemplates()
+        {
+            ImportScriptTemplates();
+            ImportEditorTemplates();
+            ImportFileTemplates();
+            ImportShaderTemplates();
+        }
+
         [MenuItem(menuItem + "Folder Settings", priority = 31)]
         private static void ProjectViewSettings()
         {
@@ -18,7 +67,7 @@ namespace SetupTool
 
             if (!File.Exists(path)) { return; }
 
-            var asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
             EditorGUIUtility.PingObject(asset);
             Selection.activeObject = asset;
         }
@@ -30,33 +79,17 @@ namespace SetupTool
 
             if (!File.Exists(path)) { return; }
 
-            var asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
             EditorGUIUtility.PingObject(asset);
             Selection.activeObject = asset;
         }
 
-        [MenuItem(menuItem + "Import Script Templates", priority = 20)]
-        public static void ImportScriptTemplates()
+        private static string DestinationPath()
         {
-            var dirPath = Path.Combine(Application.dataPath, "ScriptTemplates");
-            Directory.CreateDirectory(dirPath);
-            CopyFiles(dirPath);
-        }
+            var destinationPath = Path.Combine(Application.dataPath, "ScriptTemplates");
+            Directory.CreateDirectory(destinationPath);
 
-        [MenuItem(menuItem + "Create Special Folders", priority = 11)]
-        public static void CreateSpecialFolders()
-        {
-            FindPreferences();
-            CreateDirectories("", preferenceData.specialFolders);
-            AssetDatabase.Refresh();
-        }
-
-        [MenuItem(menuItem + "Create Project Folders", priority = 10)]
-        public static void CreateProjectFolders()
-        {
-            FindPreferences();
-            CreateDirectories(preferenceData.projectFolder, preferenceData.subFolders);
-            AssetDatabase.Refresh();
+            return destinationPath;
         }
 
         public static void CreateDirectories(string root, params string[] dir)
@@ -78,10 +111,10 @@ namespace SetupTool
             }
         }
 
-        private static void CopyFiles(string destinationPath)
+        private static void CopyFiles(string sourcePath, string destinationPath)
         {
             var dataPath = Application.dataPath.Replace("Assets", @"Packages\com.kiltec.setuptool");
-            string[] filePaths = Directory.GetFiles($@"{dataPath}\ScriptTemplates\");
+            string[] filePaths = Directory.GetFiles($@"{dataPath}\{sourcePath}\");
 
             foreach (string file in filePaths)
             {
@@ -98,7 +131,7 @@ namespace SetupTool
                 }
             }
 
-            Debug.LogWarning("Unity must be restarted to use the new script templates!");
+            Debug.LogWarning($"Unity must be restarted to use the new {sourcePath}!");
             AssetDatabase.Refresh();
         }
     }
