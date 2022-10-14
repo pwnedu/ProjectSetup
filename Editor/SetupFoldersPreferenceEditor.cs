@@ -165,6 +165,7 @@ namespace SetupTool
 
             if (setupFolders.structures.Length > 0)
             {
+                if (selected >= setupFolders.structures.Length) { selected -= 1; }
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Selection: " + setupFolders.structures[selected].assetFolderPath, labelGUIStyle, GUILayout.MinWidth(90));
                 if (GUILayout.Button("<", buttonGUIStyle, GUILayout.Width(width)))
