@@ -1,0 +1,32 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+
+	#ROOTNAMESPACEBEGIN#
+public class Constructor#SCRIPTNAME#
+{
+	// Public field
+	public string build;  
+
+	// Class constructor with parameter
+	public ConstructorNewConstructor(string buildType)
+	{
+		build = buildType;
+	}
+}
+
+public class #SCRIPTNAME# : MonoBehaviour
+{
+	[SerializeField] private string buildType = "TestType";
+
+	private void Start()
+	{
+		Constructor#SCRIPTNAME# #SCRIPTNAME_LOWER# = new Constructor#SCRIPTNAME#(buildType);
+		Debug.Log(#SCRIPTNAME_LOWER#.build);
+	}
+}
+#ROOTNAMESPACEEND#

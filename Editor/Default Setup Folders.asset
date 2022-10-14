@@ -26,7 +26,6 @@ MonoBehaviour:
   - Sounds
   - Textures
   specialFolders:
-  - Editor Default Resources
   - Gizmos
   - Plugins
   - ScriptTemplates
