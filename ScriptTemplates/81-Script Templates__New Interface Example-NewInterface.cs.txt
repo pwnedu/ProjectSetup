@@ -8,13 +8,13 @@ using UnityEngine;
 
     #ROOTNAMESPACEBEGIN#
 // Interface
-interface I#SCRIPTNAME# 
+public interface I#SCRIPTNAME# 
 {
     void InterfaceMethod(); // Interface method (does not have a body).
 }
 
 // Implements the I#SCRIPTNAME# interface
-class #SCRIPTNAME#Implementation : I#SCRIPTNAME# 
+public class #SCRIPTNAME#Implementation : I#SCRIPTNAME# 
 {
     #region Implementation
 
@@ -28,7 +28,7 @@ class #SCRIPTNAME#Implementation : I#SCRIPTNAME#
 }
 
 // Using the interface
-class #SCRIPTNAME# : MonoBehaviour
+public class #SCRIPTNAME# : MonoBehaviour
 {
     #region MonoBehaviour Test
 

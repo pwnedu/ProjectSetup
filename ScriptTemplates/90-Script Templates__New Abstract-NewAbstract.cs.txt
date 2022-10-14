@@ -7,7 +7,7 @@
 using UnityEngine;
 
     #ROOTNAMESPACEBEGIN#
-abstract class #SCRIPTNAME#
+public abstract class #SCRIPTNAME#
 {
     // Abstract method
     public abstract void AbstractMethod();

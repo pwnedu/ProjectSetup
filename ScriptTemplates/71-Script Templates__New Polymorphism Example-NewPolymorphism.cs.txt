@@ -8,7 +8,7 @@ using UnityEngine;
 
     #ROOTNAMESPACEBEGIN#
 // Base class (parent).
-class #SCRIPTNAME#Base
+public class #SCRIPTNAME#Base
 {
     #region Parent Class
 
@@ -21,7 +21,7 @@ class #SCRIPTNAME#Base
 }
 
 // Derived class (child).
-class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
+public class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
 {
     #region Child Class
 
@@ -34,7 +34,7 @@ class #SCRIPTNAME#Derived : #SCRIPTNAME#Base
 }
 
 // Using the Polymorphism inheritance.
-class #SCRIPTNAME# : MonoBehaviour
+public class #SCRIPTNAME# : MonoBehaviour
 {
     #region MonoBehaviour Test
 

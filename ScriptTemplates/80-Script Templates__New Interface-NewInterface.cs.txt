@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------
 
 	#ROOTNAMESPACEBEGIN#
-interface #SCRIPTNAME#
+public interface #SCRIPTNAME#
 {
 	#NOTRIM#    
 }
