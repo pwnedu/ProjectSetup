@@ -10,10 +10,28 @@ using UnityEditor;
 	#ROOTNAMESPACEBEGIN#
 public class #SCRIPTNAME# : EditorWindow
 {
+	public static #SCRIPTNAME# window;
+
 	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
-	public static void ShowEditorWindow()
+    public static void ShowUtilityWindow()
 	{
-		GetWindow<#SCRIPTNAME#>("#SCRIPTNAME#");
+		#region Create Utility Window
+
+		if (window == null)
+		{
+		    window = CreateInstance<#SCRIPTNAME#>();
+		} 
+		else
+		{
+		    window.Focus();
+		}
+		
+		window.titleContent = new GUIContent("#NAME#");
+		window.minSize = new Vector2(400, 200);
+		window.maxSize = new Vector2(400, 200);
+		window.ShowUtility();
+
+		#endregion
 	}
 
 	private void OnGUI()

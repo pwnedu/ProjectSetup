@@ -1,0 +1,79 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+using UnityEditor;
+
+	#ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : EditorWindow
+{
+    #region Private Fields
+
+    // The position of the window
+    Rect windowRect = new Rect(100, 100, 200, 100);
+    bool popup;
+    
+    #endregion
+
+    [MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
+    static void ShowEditorWindow()
+    {
+        var window = GetWindow(typeof(#SCRIPTNAME#));
+        window.titleContent = new GUIContent("#NAME#");
+    }
+    
+    private void OnGUI()
+    {
+        #region Editor Window Layout
+
+        GUILayout.Label("#NAME# Heading", EditorStyles.largeLabel);
+        GUILayout.Space(20);
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Show/Hide Popup", GUILayout.Width(150), GUILayout.Height(25)))
+        {
+            popup = !popup;
+        }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+    
+        #endregion
+
+        #region Popup Window
+
+        if (popup)
+        {
+            BeginWindows();
+    
+            // All Popup Windows must come inside here.
+            windowRect = GUILayout.Window(1, windowRect, DrawPopupWindow, "#NAME# Popup");
+    
+            EndWindows();
+        }
+
+        #endregion
+    }
+    
+    private void DrawPopupWindow(int unusedWindowID)
+    {
+        #region Popup Window Layout
+
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Hi"))
+        {
+            Debug.Log("Hello World!");
+        }
+        if (GUILayout.Button("Bye"))
+        {
+            popup = false;
+        }
+        GUILayout.FlexibleSpace();
+        GUI.DragWindow();
+
+        #endregion
+    }
+}
+#ROOTNAMESPACEEND#

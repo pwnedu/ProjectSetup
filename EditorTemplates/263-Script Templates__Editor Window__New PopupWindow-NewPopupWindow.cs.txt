@@ -1,0 +1,105 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+using UnityEditor;
+
+	#ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : EditorWindow
+{
+	public static #SCRIPTNAME# window;
+
+	#region Private Fields
+	
+	readonly float windowWidth = 440f;
+	readonly float windowHeight = 220f;
+	
+	Color borderColour = new Color32(150, 150, 150, 255);
+	Color backgroundColor = new Color32(75, 75, 75, 255);
+	
+	Texture2D borderTexture;
+	Texture2D bgTexture;
+	
+	Rect borderSection;
+	Rect bgSection;
+	Rect buttonPos;
+	
+	#endregion
+
+	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
+    public static void ShowPopupWindow()
+	{
+		#region Initialise Window
+
+		if (window == null)
+		{
+		    window = CreateInstance<#SCRIPTNAME#>();
+		} 
+		else
+		{
+		    window.Focus();
+		}
+		
+		var resolution = Screen.currentResolution;
+		var width = window.windowWidth;
+		var height = window.windowHeight;
+		window.position = new Rect((resolution.width * 0.5f) - (width * 0.5f), (resolution.height * 0.5f) - (height * 0.5f), width, height);
+		window.ShowPopup();
+	
+		#endregion
+	}
+
+	private void OnEnable()
+	{
+		#region Set Textures
+		
+		borderTexture = new Texture2D(1, 1);
+		borderTexture.SetPixel(0, 0, borderColour);
+		borderTexture.Apply();
+		
+		bgTexture = new Texture2D(1, 1);
+		bgTexture.SetPixel(0, 0, backgroundColor);
+		bgTexture.Apply();
+		
+		#endregion
+		
+		#region Set Positions
+		
+		borderSection = new Rect(0f, 0f, windowWidth, windowHeight);
+		bgSection = new Rect(2f, 2f, windowWidth - 4f, windowHeight - 4f);
+		buttonPos = new Rect(windowWidth - 30f, 10f, 20f, 20f);
+		
+		#endregion
+    }
+
+	private void OnGUI()
+	{
+		#region Draw Textures
+		
+		if (borderTexture != null)
+		{
+		    GUI.DrawTexture(borderSection, borderTexture);
+		}
+		
+		if (bgTexture != null)
+		{
+		    GUI.DrawTexture(bgSection, bgTexture);
+		}
+		
+		#endregion
+		
+		#region Draw GUI
+		
+		GUILayout.BeginArea(buttonPos);
+		if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(20))) { this.Close(); }
+		GUILayout.EndArea();
+		
+		GUILayout.Label("NewPopupWindow Heading", EditorStyles.largeLabel);
+		
+		#endregion
+    }
+}
+#ROOTNAMESPACEEND#

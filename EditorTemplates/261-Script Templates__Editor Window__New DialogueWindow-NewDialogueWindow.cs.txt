@@ -13,14 +13,17 @@ public class #SCRIPTNAME# : EditorWindow
 	string entry;
 	string entryFieldResult;
 
+	// Add menu item to test this script.
 	[MenuItem("Window/My Editor Window/#SCRIPTNAME#")]
 	static void TestFromMenu()
 	{
-		ShowDialog("#SCRIPTNAME#", "Some Input");
+		ShowDialogueWindow("#SCRIPTNAME#", "Some Input");
     }
 
-	public static string ShowDialog(string windowName, string entry)
+	public static string ShowDialogueWindow(string windowName, string entry)
 	{
+		#region Create Dialogue Window
+
 		#SCRIPTNAME# dialog = CreateInstance<#SCRIPTNAME#>();
 		dialog.titleContent = new GUIContent(windowName);
 
@@ -33,10 +36,14 @@ public class #SCRIPTNAME# : EditorWindow
 		dialog.ShowModal();
 
 		return dialog.entryFieldResult;
+
+		#endregion
 	}
 
 	private void OnGUI()
 	{
+		#region Draw Window Layout
+
 		GUILayout.Space(20);
 		GUILayout.BeginHorizontal();
 		GUILayout.Space(20);
@@ -58,6 +65,8 @@ public class #SCRIPTNAME# : EditorWindow
 		}
 
 		GUILayout.EndHorizontal();
+
+		#endregion
     }
 
 	private void Accepted()
