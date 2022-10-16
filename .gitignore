@@ -1,10 +1,11 @@
-# This .gitignore file should be placed in the root 
-#
+# This .gitignore file should be placed at the root directory
+
+# Visual Studio cache directory
+.vs/
 
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
-*.asset.meta
 *.cs.meta
 *.meta
