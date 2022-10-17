@@ -12,6 +12,8 @@ namespace SetupTool
         const string menuItem = "Tools/Custom Tools/Project Setup/";
         const string toolPath = "Packages/com.kiltec.setuptool/";
 
+        #region Folders Menu Items
+
         [MenuItem(menuItem + "Create Folders/Special Folders", priority = 11)]
         public static void CreateSpecialFolders()
         {
@@ -27,6 +29,10 @@ namespace SetupTool
             CreateDirectories(preferenceData.projectFolder, preferenceData.subFolders);
             AssetDatabase.Refresh();
         }
+
+        #endregion
+
+        #region Templates Menu Items
 
         [MenuItem(menuItem + "Import Templates/Script Templates", priority = 20)]
         public static void ImportScriptTemplates()
@@ -45,26 +51,26 @@ namespace SetupTool
         {
             // Get Render Pipeline
             var pipeline = GraphicsSettings.currentRenderPipeline;
-            Renderer renderer;
+            UnityRenderer renderer;
 
             if (pipeline == null) 
             { 
-                renderer = Renderer.SRP;
+                renderer = UnityRenderer.SRP;
                 CopyFiles($"ShaderTemplates/SRP", DestinationPath());
             }
             else if (pipeline.ToString().Contains("Universal"))
             { 
-                renderer = Renderer.URP;
+                renderer = UnityRenderer.URP;
                 CopyFiles($"ShaderTemplates/URP", DestinationPath());
             }
             else if (pipeline.ToString().Contains("Lightweight"))
             {
-                renderer = Renderer.LWRP;
+                renderer = UnityRenderer.LWRP;
                 CopyFiles($"ShaderTemplates/URP", DestinationPath());
             }
             else 
             { 
-                renderer = Renderer.HDRP;
+                renderer = UnityRenderer.HDRP;
                 CopyFiles($"ShaderTemplates/HDRP", DestinationPath());
             }
 
@@ -85,6 +91,10 @@ namespace SetupTool
             ImportFileTemplates();
             ImportShaderTemplates();
         }
+
+        #endregion
+
+        #region Settings and Help
 
         [MenuItem(menuItem + "Folder Settings", priority = 31)]
         private static void ProjectViewSettings()
@@ -110,6 +120,9 @@ namespace SetupTool
             Selection.activeObject = asset;
         }
 
+        #endregion
+
+        #region Create and Copy Functions
         private static string DestinationPath()
         {
             var destinationPath = Path.Combine(Application.dataPath, "ScriptTemplates");
@@ -160,8 +173,10 @@ namespace SetupTool
             Debug.LogWarning($"Unity must be restarted to use the new {sourcePath}!");
             AssetDatabase.Refresh();
         }
-    
-        private enum Renderer
+
+        #endregion
+
+        private enum UnityRenderer
         {
             SRP,
             HDRP,
