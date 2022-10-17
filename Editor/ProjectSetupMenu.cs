@@ -37,13 +37,13 @@ namespace SetupTool
         [MenuItem(menuItem + "Import Templates/Script Templates", priority = 20)]
         public static void ImportScriptTemplates()
         {
-            CopyFiles("ScriptTemplates", DestinationPath());
+            CopyFiles("Editor/Templates/ScriptTemplates", DestinationPath());
         }
 
         [MenuItem(menuItem + "Import Templates/Editor Templates", priority = 21)]
         public static void ImportEditorTemplates()
         {
-            CopyFiles("EditorTemplates", DestinationPath());
+            CopyFiles("Editor/Templates/EditorTemplates", DestinationPath());
         }
 
         [MenuItem(menuItem + "Import Templates/Shader Templates", priority = 22)]
@@ -56,22 +56,22 @@ namespace SetupTool
             if (pipeline == null) 
             { 
                 renderer = UnityRenderer.SRP;
-                CopyFiles($"ShaderTemplates/SRP", DestinationPath());
+                CopyFiles($"Editor/Templates/ShaderTemplates/SRP", DestinationPath());
             }
             else if (pipeline.ToString().Contains("Universal"))
             { 
                 renderer = UnityRenderer.URP;
-                CopyFiles($"ShaderTemplates/URP", DestinationPath());
+                CopyFiles($"Editor/Templates/ShaderTemplates/URP", DestinationPath());
             }
             else if (pipeline.ToString().Contains("Lightweight"))
             {
                 renderer = UnityRenderer.LWRP;
-                CopyFiles($"ShaderTemplates/URP", DestinationPath());
+                CopyFiles($"Editor/Templates/ShaderTemplates/URP", DestinationPath());
             }
             else 
             { 
                 renderer = UnityRenderer.HDRP;
-                CopyFiles($"ShaderTemplates/HDRP", DestinationPath());
+                CopyFiles($"Editor/Templates/ShaderTemplates/HDRP", DestinationPath());
             }
 
             Debug.Log($"Shader Templates imported for current Render Pipeline: {renderer}");
@@ -80,7 +80,7 @@ namespace SetupTool
         [MenuItem(menuItem + "Import Templates/File Templates", priority = 23)]
         public static void ImportFileTemplates()
         {
-            CopyFiles("FileTemplates", DestinationPath());
+            CopyFiles("Editor/Templates/FileTemplates", DestinationPath());
         }
 
         [MenuItem(menuItem + "Import Templates/All Templates", priority = 60)]

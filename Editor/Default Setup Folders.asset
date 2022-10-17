@@ -31,4 +31,16 @@ MonoBehaviour:
   - ScriptTemplates
   - Standard Assets
   - StreamingAssets
-  structures: []
+  structures:
+  - assetFolderPath: _MyProject/Resources
+    subFolders:
+    - Icons
+    - Labels
+    - Skins
+  - assetFolderPath: Package
+    subFolders:
+    - Editor
+    - Runtime
+    - Tests
+    - Samples~
+    - Documentation~
