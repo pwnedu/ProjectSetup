@@ -1,5 +1,5 @@
 {
-    "name": "ProjectSetup",
+    "name": "Kiltec.ProjectSetup.Editor",
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [
