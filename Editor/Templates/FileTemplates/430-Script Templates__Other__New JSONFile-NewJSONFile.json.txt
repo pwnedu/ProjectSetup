@@ -1,14 +1,14 @@
 {
-  "name": "#SCRIPTNAME#",
-  "version": "#PROJECT_VERSION#",
-  "date": "#CREATION_DATE#"
-  "author": "#DEVELOPER_NAME#",
-  "displayName": "#PROJECT_NAME#",
+  "name": "#NAME#",
+  "version": "",
+  "date": ""
+  "author": "",
+  "displayName": "",
   "description": "",
   "keywords": [
-    "unity",
-    "editor",
-    "script",
-    "json"
+    "",
+    "",
+    "",
+    ""
   ]
 }
