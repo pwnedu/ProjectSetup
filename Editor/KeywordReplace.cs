@@ -36,8 +36,8 @@ namespace SetupTool
             fileContent = fileContent.Replace("#PROJECT_NAME#", PlayerSettings.companyName);
             fileContent = fileContent.Replace("#PROJECT_VERSION#", PlayerSettings.companyName);
 
-            string noEditor = myName[0].Replace("#PRIMARY_SCRIPTNAME#", "");
-            fileContent = fileContent.Replace("KeywordReplace", noEditor);
+            string noEditor = myName[0].Replace("Editor", "");
+            fileContent = fileContent.Replace("#PRIMARY_SCRIPTNAME#", noEditor);
 
             File.WriteAllText(path, fileContent);
             AssetDatabase.Refresh();
