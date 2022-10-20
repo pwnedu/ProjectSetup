@@ -1,5 +1,14 @@
-{ "name": {
-	"id": "001",
-	"value": "data"
-	}
+{
+  "name": "#SCRIPTNAME#",
+  "version": "#APPLICATION_VERSION#",
+  "date": "#CREATION_DATE#"
+  "author": "#DEVELOPER_NAME#",
+  "displayName": "#PROJECT_NAME#",
+  "description": "",
+  "keywords": [
+    "unity",
+    "editor",
+    "script",
+    "json"
+  ]
 }
