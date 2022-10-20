@@ -1,6 +1,6 @@
 {
   "name": "#SCRIPTNAME#",
-  "version": "#APPLICATION_VERSION#",
+  "version": "#PROJECT_VERSION#",
   "date": "#CREATION_DATE#"
   "author": "#DEVELOPER_NAME#",
   "displayName": "#PROJECT_NAME#",
