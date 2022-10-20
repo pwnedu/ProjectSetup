@@ -31,11 +31,12 @@ namespace SetupTool
 
             string fileContent = File.ReadAllText(path);
 
-            fileContent = fileContent.Replace("17/10/2022 14:16:06", System.DateTime.Now + "");
-            fileContent = fileContent.Replace("My project", PlayerSettings.productName);
-            fileContent = fileContent.Replace("DefaultCompany", PlayerSettings.companyName);
+            fileContent = fileContent.Replace("#CREATION_DATE#", System.DateTime.Now + "");
+            fileContent = fileContent.Replace("#DEVELOPER_NAME#", PlayerSettings.productName);
+            fileContent = fileContent.Replace("#PROJECT_NAME#", PlayerSettings.companyName);
+            fileContent = fileContent.Replace("#PROJECT_VERSION#", PlayerSettings.companyName);
 
-            string noEditor = myName[0].Replace("Editor", "");
+            string noEditor = myName[0].Replace("#PRIMARY_SCRIPTNAME#", "");
             fileContent = fileContent.Replace("KeywordReplace", noEditor);
 
             File.WriteAllText(path, fileContent);
