@@ -6,7 +6,7 @@ namespace SetupTool
 {
     public class KeywordReplace : UnityEditor.AssetModificationProcessor
     {
-        static string[] supportedFileTypes = new string[] { ".cs", ".js", ".boo", ".json" };
+        static string[] supportedFileTypes = new string[] { ".cs", ".js", ".boo" };
 
         public static void OnWillCreateAsset(string path)
         {
