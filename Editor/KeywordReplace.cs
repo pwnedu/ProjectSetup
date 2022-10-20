@@ -6,6 +6,8 @@ namespace SetupTool
 {
     public class KeywordReplace : UnityEditor.AssetModificationProcessor
     {
+        static string[] supportedFileTypes = new string[] { ".cs", ".js", ".boo", ".json" };
+
         public static void OnWillCreateAsset(string path)
         {
             path = path.Replace(".meta", "");
@@ -13,7 +15,10 @@ namespace SetupTool
             if (index < 0) { return; }
 
             string file = path.Substring(index);
-            if (file != ".cs" && file != ".js" && file != ".boo") { return; }
+            foreach (var fileType in supportedFileTypes) 
+            { 
+                if (file != fileType) { return; } 
+            }
 
             string myPath = path;
             int folderIndex = myPath.LastIndexOf("/");
@@ -34,7 +39,7 @@ namespace SetupTool
             fileContent = fileContent.Replace("#CREATION_DATE#", System.DateTime.Now + "");
             fileContent = fileContent.Replace("#DEVELOPER_NAME#", PlayerSettings.productName);
             fileContent = fileContent.Replace("#PROJECT_NAME#", PlayerSettings.companyName);
-            fileContent = fileContent.Replace("#PROJECT_VERSION#", PlayerSettings.companyName);
+            fileContent = fileContent.Replace("#PROJECT_VERSION#", Application.version);
 
             string noEditor = myName[0].Replace("Editor", "");
             fileContent = fileContent.Replace("#PRIMARY_SCRIPTNAME#", noEditor);
