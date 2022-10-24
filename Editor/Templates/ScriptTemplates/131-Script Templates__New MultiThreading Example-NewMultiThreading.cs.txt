@@ -1,0 +1,61 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+using System;
+using System.Threading;
+
+    #ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    #region Multi Threading Example
+
+    public static void CallToChildThread()
+    {
+        try
+        {
+            Debug.Log("Child thread starts");
+
+            // do some work, like counting to 10
+            for (int counter = 0; counter <= 10; counter++)
+            {
+                Thread.Sleep(500);
+                Debug.Log(counter);
+            }
+
+            Debug.Log("Child Thread Completed");
+        }
+        catch (ThreadAbortException e)
+        {
+            Debug.Log("Thread Abort Exception: " + e);
+        }
+        finally
+        {
+            Debug.Log("Couldn't catch the Thread Exception");
+        }
+    }
+
+    private void Awake()
+    {
+        ThreadStart childref = new ThreadStart(CallToChildThread);
+        Debug.Log("In Main: Creating the Child thread");
+
+        Thread childThread = new Thread(childref);
+        childThread.Start();
+
+        //stop the main thread for some time
+        Thread.Sleep(2000);
+
+        //now abort the child
+        Debug.Log("In Main: Aborting the Child thread");
+
+        childThread.Abort();
+        Console.ReadKey();
+    }
+
+    #endregion
+}
+#ROOTNAMESPACEEND#

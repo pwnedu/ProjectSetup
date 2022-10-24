@@ -1,0 +1,28 @@
+//-----------------------------------------------------------------
+//	Project	: #PROJECT_NAME#
+//	Author	: #DEVELOPER_NAME#                    
+//	Date	: #CREATION_DATE#
+//-----------------------------------------------------------------
+
+using UnityEngine;
+
+    #ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : MonoBehaviour 
+{
+    #region Event Delegate
+
+    public GameObject myObject;
+
+    // Setup the Event
+    public bool IsObjectActive { get { return myObject.activeSelf; } }
+    public delegate void Change(int id, bool active);
+    public static event Change OnAction;
+
+    private void Start() 
+    {
+        OnAction(1, IsObjectActive);
+    }
+
+    #endregion
+}
+#ROOTNAMESPACEEND#
