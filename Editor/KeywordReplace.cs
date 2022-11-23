@@ -6,9 +6,6 @@ namespace SetupTool
 {
     public class KeywordReplace : UnityEditor.AssetModificationProcessor
     {
-        //readonly static string[] supportedFileTypes = new string[3] { ".cs", ".js", ".boo" };
-        //static bool canContinue;
-
         public static void OnWillCreateAsset(string path)
         {
             path = path.Replace(".meta", "");
@@ -17,13 +14,6 @@ namespace SetupTool
         
             string file = path.Substring(index);
             if (file != ".cs" && file != ".js" && file != ".boo") { return; }
-
-            //foreach (var fileType in supportedFileTypes) 
-            //{ 
-            //    if (file == fileType) { canContinue = true; break; } 
-            //}
-            //
-            //if (!canContinue) { return; }
 
             string myPath = path;
             int folderIndex = myPath.LastIndexOf("/");
@@ -51,8 +41,6 @@ namespace SetupTool
         
             File.WriteAllText(path, fileContent);
             AssetDatabase.Refresh();
-
-            //canContinue = false;
         }
     }
 }
