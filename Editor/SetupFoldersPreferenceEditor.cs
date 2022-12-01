@@ -149,6 +149,8 @@ namespace SetupTool
             }
             EditorGUILayout.EndHorizontal();
 
+            if (setupFolders.structures == null) { setupFolders.structures = new FolderStructure[0]; }
+
             var maxLength = setupFolders.structures.Length - 1;
             var width = 18;
 
