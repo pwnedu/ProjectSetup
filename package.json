@@ -2,7 +2,7 @@
   "name": "com.kiltec.setuptool",
   "version": "0.0.5-preview.1",
   "displayName": "Project Setup by pwnedu",
-  "description": "This is a simple tool that helps with new project setup.",
+  "description": "This is a simple tool that helps setting up new projects. Quickly create your folder structure and import various templates.",
   "unity": "2018.1",
   "documentationUrl": "https://github.com/pwnedu/SetupTool/wiki",
   "licensesUrl": "https://github.com/pwnedu/UnityTools/blob/main/LICENSE",
