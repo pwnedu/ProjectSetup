@@ -99,13 +99,12 @@ namespace SetupTool
         [MenuItem(menuItem + "Folder Settings", priority = 31)]
         private static void ProjectViewSettings()
         {
-            var path = $"{toolPath}Editor/Default Setup Folders.asset";
+            //var path = $"{toolPath}Editor/Default Setup Folders.asset";
+            //if (!File.Exists(path)) { return; }
+            //var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
 
-            if (!File.Exists(path)) { return; }
-
-            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
-            EditorGUIUtility.PingObject(asset);
-            Selection.activeObject = asset;
+            EditorGUIUtility.PingObject(preferenceData);
+            Selection.activeObject = preferenceData;
         }
 
         [MenuItem(menuItem + "Setup Help", priority = 32)]
@@ -140,6 +139,7 @@ namespace SetupTool
             }
         }
 
+        [InitializeOnLoadMethod]
         private static void FindPreferences()
         {
             var guids = AssetDatabase.FindAssets($"t:{typeof(SetupFoldersPreference)}");
