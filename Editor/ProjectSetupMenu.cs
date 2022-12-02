@@ -10,7 +10,7 @@ namespace SetupTool
         private static SetupFoldersPreference preferenceData;
 
         const string menuItem = "Tools/Custom Tools/Project Setup/";
-        const string toolPath = "Packages/com.kiltec.setuptool/";
+        const string toolPath = "Packages/com.kiltec.projectsetup/";
 
         #region Folders Menu Items
 
