@@ -4,6 +4,7 @@
   "displayName": "Project Setup by pwnedu",
   "description": "This is a simple tool that helps setting up new projects. Quickly create your folder structure and import various templates.",
   "unity": "2018.1",
+  "changelogUrl": "https://github.com/pwnedu/ProjectSetup/blob/main/CHANGELOG.md",
   "documentationUrl": "https://github.com/pwnedu/ProjectSetup/wiki",
   "licensesUrl": "https://github.com/pwnedu/ProjectSetup/blob/main/LICENSE",
   "keywords": [
