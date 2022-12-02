@@ -1,12 +1,22 @@
-# SetupTool #
+# SetupTool
 
-### Setup Default Project Structure ###
+### Setup Default Project Structure
 
-#### Setup Folders ####
+#### Create Folder Settings
 
 ---
 
-1. Inside Unity navigate to the menu bar and select 'Tools' ▶ 'Custom Tools' ▶ 'Project Setup' ▶ 'Folder Settings'
+1. Inside the Unity Assets Folder right click 'Create' > 'Unity Tools' > 'My Setup' > 'Preferences'
+
+2. Edit your Custom Folder Settings.
+
+---
+
+#### Update Folder Settings
+
+---
+
+1. Inside Unity navigate to the menu bar and select 'Tools' > 'Custom Tools' > 'Project Setup' > 'Folder Settings'
 
 2. Setup your prefered folder structures. 
 
@@ -14,13 +24,13 @@
 
 ---
 
-### Setup Script Templates ###
+### Setup Script Templates
 
-#### Setup and define templates ####
+#### Setup and define templates
 
 ---
 
-1. Inside Unity navigate to to the menu bar and select 'Tools' ▶ 'Custom Tools' ▶ 'Project Setup' ▶ 'Import Script Templates'
+1. Inside Unity navigate to to the menu bar and select 'Tools' > 'Custom Tools' > 'Project Setup' > 'Import Script Templates'
 
 2. Setup definitions:
 
@@ -28,7 +38,7 @@
 	* Define the Author in 'Edit' ▶ 'Project Settings' ▶ 'Player' ▶ 'Company Name'         
 	* Define the Project in 'Edit' ▶ 'Project Settings' ▶ 'Player' ▶ 'Product Name'        
 
-#### Template Keywords List #### 
+#### Template Keywords List
 
 ---
 
