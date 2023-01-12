@@ -32,8 +32,8 @@ namespace SetupTool
             string fileContent = File.ReadAllText(path);
         
             fileContent = fileContent.Replace("#CREATION_DATE#", System.DateTime.Now + "");
-            fileContent = fileContent.Replace("#DEVELOPER_NAME#", PlayerSettings.productName);
-            fileContent = fileContent.Replace("#PROJECT_NAME#", PlayerSettings.companyName);
+            fileContent = fileContent.Replace("#DEVELOPER_NAME#", PlayerSettings.companyName);
+            fileContent = fileContent.Replace("#PROJECT_NAME#", PlayerSettings.productName);
             fileContent = fileContent.Replace("#PROJECT_VERSION#", Application.version);
         
             string noEditor = myName[0].Replace("Editor", "");
