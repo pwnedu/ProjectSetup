@@ -152,7 +152,7 @@ namespace SetupTool
 
         private static void CopyFiles(string sourcePath, string destinationPath)
         {
-            var dataPath = Application.dataPath.Replace("Assets", @"Packages\com.kiltec.setuptool");
+            var dataPath = Application.dataPath.Replace("Assets", toolPath);
             string[] filePaths = Directory.GetFiles($@"{dataPath}\{sourcePath}\");
 
             foreach (string file in filePaths)
